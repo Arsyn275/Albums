@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ean & Nicole</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Gellatio';
+      src: url('Gellatio Regular.ttf') format('truetype');
+    }
+
+    html, body {
+      width: 1020px;
+      height: 800px;
+      margin: 0 auto; /* Center align the website horizontally */
+      background-color: #333;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background-color: #000;
+      padding: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-family: 'Gellatio', cursive;
+      display: flex;
+      align-items: center;
+    }
+
+    .header .logo img {
+      height: 40px; /* Adjust the height as needed */
+      margin-right: 10px; /* Optional: Adjust margin for spacing */
+    }
+
+    .header .logo-text {
+      font-size: 0.5em; /* Adjust font size as needed */
+    }
+
+    .header nav {
+      flex: 2;
+      display: flex;
+      justify-content: center; /* Center align items */
+      align-items: center; /* Center vertically */
+      margin-left: -50px; /* Adjust negative margin to move items further to the left */
+    }
+
+    .header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px; /* Increase the horizontal spacing */
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .header nav a:hover {
+      text-decoration: underline;
+    }
+
+    .alerts {
+      display: flex;
+      align-items: center;
+    }
+
+    .alerts a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px; /* Adjust margin for spacing */
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .alerts img {
+      height: 30px; /* Adjust the height of the bell image */
+      cursor: pointer; /* Add cursor pointer for better UX */
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+      flex: 1;
+      position: relative;
+      background-image: url('mainbg.jpg'); /* Add the background image */
+      background-size: cover; /* Cover the entire content area */
+      background-position: center; /* Center the background image */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .content p {
+      font-size: 2em; /* Adjust the font size as needed */
+      font-family: 'Gellatio', sans-serif; /* Use Gellatio font */
+    }
+
+    .footer {
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .footer p {
+      margin: 0;
+      padding: 10px;
+      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+      font-size: 0.8em; /* Adjust font size smaller */
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">
+      <img src="logo.png" alt="Logo" /> <!-- Replace with your actual logo image -->
+      <span class="logo-text">Ean & Nicole</span>
+    </h1>
+    <nav>
+      <a href="Albums.html">Albums</a> <!-- Link to Albums.html -->
+    </nav>
+    <div class="alerts">
+      <a href="#">Alerts</a>
+      <img src="bell.png" alt="Bell" /> <!-- Replace with your bell image -->
+    </div>
+  </header>
+
+  <div class="content">
+    <p>As we navigate life.</p>
+    <footer class="footer">
+      <p>This website is a testament to our journey through life, capturing every precious memory so we can cherish them together as we grow old. To my future wife, with all my love.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .nav {
+            background-color: #444;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; /* Align items to the right */
+        }
+        .nav li {
+            margin-left: 20px; /* Add space between items */
+        }
+        .nav li:last-child {
+            margin-left: auto; /* Pushes the Back button to the right */
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            color: #ccc;
+        }
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            margin: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .card video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>VIDEOS</h1> <!-- Changed header name to "US" -->
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" id="backToAlbums">Back</a></li>
+            </ul>
+        </div>
+        <div class="main" id="videoContainer">
+            <!-- Videos will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the Back link element
+        var backLink = document.getElementById("backToAlbums");
+
+        // Add click event listener to the Back link
+        backLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default action of the link
+            window.location.href = "Albums.html"; // Navigate to Albums.html
+        });
+
+        var mainContainer = document.getElementById("videoContainer");
+
+        var numVideos = 118;
+        var folderName = "UsV"; // Change folder name to "UsV"
+
+        for (var i = 1; i <= numVideos; i++) {
+            var videoSrc = folderName + "/video" + i + ".mp4";
+            var cardDiv = document.createElement("div");
+            cardDiv.classList.add("card");
+
+            var video = document.createElement("video");
+            video.controls = true; // Enable controls for user interaction
+            video.controlsList = "nodownload noremoteplayback"; // Prevent download and remote playback
+            video.preload = "auto"; // Force preload
+
+            var source = document.createElement("source");
+            source.src = videoSrc;
+            source.type = "video/mp4";
+
+            video.appendChild(source);
+            cardDiv.appendChild(video);
+
+            mainContainer.appendChild(cardDiv);
+
+            video.onloadedmetadata = function() {
+                var videoWidth = this.videoWidth;
+                var videoHeight = this.videoHeight;
+
+                var aspectRatio = videoWidth / videoHeight;
+
+                if (aspectRatio >= 1) {
+                    cardDiv.style.width = "calc(25% - 40px)"; // Landscape
+                } else {
+                    cardDiv.style.width = "calc(50% - 40px)"; // Portrait
+                }
+            };
+
+            // Add event listener to enable fullscreen
+            video.addEventListener('click', function() {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) { /* Firefox */
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) { /* IE/Edge */
+                    video.msRequestFullscreen();
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

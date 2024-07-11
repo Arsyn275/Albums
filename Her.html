@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .nav {
+            background-color: #444;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .nav li {
+            margin-right: 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            color: #ccc;
+        }
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            margin: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>HER</h1> <!-- Changed header name to "HER" -->
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+            </ul>
+        </div>
+        <div class="main" id="imageContainer">
+            <!-- Images will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var mainContainer = document.getElementById("imageContainer");
+
+    var numImages = 911;
+    var folderName = "Her";
+
+    for (var i = 1; i <= numImages; i++) {
+        var imgSrc = folderName + "/image" + i + ".jpg";
+        var cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+
+        var img = new Image();
+        img.src = imgSrc;
+        img.alt = "Image " + i;
+        img.loading = "lazy"; // Lazy loading attribute
+
+        img.onload = function() {
+            var imgWidth = this.width;
+            var imgHeight = this.height;
+
+            var aspectRatio = imgWidth / imgHeight;
+
+            if (aspectRatio >= 1) {
+                cardDiv.style.width = "calc(25% - 40px)";
+            } else {
+                cardDiv.style.width = "calc(50% - 40px)";
+            }
+        };
+
+        img.style.maxWidth = "100%";
+        img.style.height = "auto";
+        img.style.borderRadius = "10px";
+
+        cardDiv.appendChild(img);
+
+        mainContainer.appendChild(cardDiv);
+    }
+});
+    </script>
+</body>
+</html>
